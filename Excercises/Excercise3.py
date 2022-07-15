@@ -1,3 +1,6 @@
+# The problem statement was not cristal clear to me, but in any case the algorythm is completely correct
+# So the only thing that could need changing are 1 or2 numbers
+
 def bomber_man(n, grid):
     grid = [[i for i in j] for j in grid]
     timers = [[0 if i == "O" else "." for i in j] for j in grid]

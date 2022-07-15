@@ -13,6 +13,7 @@ from .models import UrlData
 # I was using postman to test my api, so unfortunately I was forced to disable csrf tokens, I wrote a script
 # to automatically set the token in the header, but it simply wouldn't work.
 
+# locahost:8000
 # URL shortening
 @csrf_exempt
 def urlShort(request):
@@ -32,6 +33,7 @@ def urlShort(request):
     else:
         return HttpResponse("Internal error")
 
+# localhost:8000/p/
 # Premium URL shortening
 @csrf_exempt
 def premiumUrlShort(request):
@@ -53,7 +55,7 @@ def premiumUrlShort(request):
     else:
         return HttpResponse("Internal error")
 
-
+# localhost:8000/u/{slug}/
 # Redirect to the real URL
 @csrf_exempt
 def urlRedirect(request, slugs):
@@ -62,6 +64,7 @@ def urlRedirect(request, slugs):
     data.save()
     return redirect(data.url)
 
+# localhost:8000/a/
 # Get the data of all URLs
 @csrf_exempt
 def allUrls(request):
@@ -69,7 +72,7 @@ def allUrls(request):
     data_json = serializers.serialize('json', data)
     return HttpResponse(data_json, content_type='application/json')
 
-
+# localhost:8000/d/
 # Delete a URLs
 @csrf_exempt
 def deleteUrl(request):
@@ -87,6 +90,7 @@ def deleteUrl(request):
         return HttpResponse("Internal error")
 
 
+# localhost:8000/data/
 # Get the data of a specific URLs
 @csrf_exempt
 def urlData(request):
